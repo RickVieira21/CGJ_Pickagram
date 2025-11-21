@@ -18,6 +18,12 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\..\Users\gonca\Downloads\02-hello-2d-world-2025\02-hello-2d-world-2025\mgl\mglApp.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Users\gonca\Downloads\02-hello-2d-world-2025\02-hello-2d-world-2025\mgl\mglError.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Users\gonca\Downloads\02-hello-2d-world-2025\02-hello-2d-world-2025\mgl\mglShader.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Users\gonca\Downloads\02-hello-2d-world-2025\02-hello-2d-world-2025\src\hello-2d-world.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -140,12 +146,6 @@ xcopy /y "$(SolutionDir)libraries\glfw\lib-vc2022\glfw3.dll" "$(OutDir)"</Comman
 xcopy /y "$(SolutionDir)libraries\glfw\lib-vc2022\glfw3.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\02-hello-2d-world-2025\02-hello-2d-world-2025\mgl\mglApp.cpp" />
-    <ClCompile Include="..\02-hello-2d-world-2025\02-hello-2d-world-2025\mgl\mglError.cpp" />
-    <ClCompile Include="..\02-hello-2d-world-2025\02-hello-2d-world-2025\mgl\mglShader.cpp" />
-    <ClCompile Include="..\02-hello-2d-world-2025\02-hello-2d-world-2025\src\hello-2d-world.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
