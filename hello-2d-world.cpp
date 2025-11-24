@@ -48,7 +48,7 @@ private:
     GLint MatrixId;
 
     void createShaderProgram();
-    void createBufferObjects();
+    //void createBufferObjects();
     void destroyBufferObjects();
     void drawScene();
 };
@@ -71,30 +71,30 @@ void MyApp::createShaderProgram() {
 
 //////////////////////////////////////////////////////////////////// VAOs & VBOs
 
-
-// Base Right Triangle (unitário 2D)
+//Tudo branco
+// Base Right Triangle (unitário 2D)             //Tudo branco
 const Vertex RightTriangleVertices[] = {
     {{0.0f, 0.0f, 0.0f, 1.0f}, {1.0f, 1.0f, 1.0f, 1.0f}},  // bottom-left
     {{1.0f, 0.0f, 0.0f, 1.0f}, {1.0f, 1.0f, 1.0f, 1.0f}},  // bottom-right
     {{0.0f, 1.0f, 0.0f, 1.0f}, {1.0f, 1.0f, 1.0f, 1.0f}}   // top-left
 };
 const GLubyte RightTriangleIndices[] = { 0, 1, 2 };
-
+ 
 // Square (2 triângulos)
-const Vertex SquareVertices[] = {
-    {{0.0f, 0.0f, 0.0f, 1.0f}, {0.1f, 0.8f, 0.1f, 1.0f}},
-    {{1.0f, 0.0f, 0.0f, 1.0f}, {0.1f, 0.8f, 0.1f, 1.0f}},
-    {{1.0f, 1.0f, 0.0f, 1.0f}, {0.1f, 0.8f, 0.1f, 1.0f}},
-    {{0.0f, 1.0f, 0.0f, 1.0f}, {0.1f, 0.8f, 0.1f, 1.0f}}
+const Vertex SquareVertices[] = {               //Tudo branco       
+    {{0.0f, 0.0f, 0.0f, 1.0f}, {1.0f, 1.0f, 1.0f, 1.0f}},
+    {{1.0f, 0.0f, 0.0f, 1.0f}, {1.0f, 1.0f, 1.0f, 1.0f}},
+    {{1.0f, 1.0f, 0.0f, 1.0f}, {1.0f, 1.0f, 1.0f, 1.0f}},
+    {{0.0f, 1.0f, 0.0f, 1.0f}, {1.0f, 1.0f, 1.0f, 1.0f}}
 };
 const GLubyte SquareIndices[] = { 0, 1, 2, 0, 2, 3 };
 
 // Parallelogram (2 triângulos)
-const Vertex ParallelogramVertices[] = {
-    {{0.0f, 0.0f, 0.0f, 1.0f}, {1.0f, 0.5f, 0.0f, 1.0f}},
-    {{1.0f, 0.0f, 0.0f, 1.0f}, {1.0f, 0.5f, 0.0f, 1.0f}},
-    {{0.75f, 1.0f, 0.0f, 1.0f}, {1.0f, 0.5f, 0.0f, 1.0f}},
-    {{-0.25f, 1.0f, 0.0f, 1.0f}, {1.0f, 0.5f, 0.0f, 1.0f}}
+const Vertex ParallelogramVertices[] = {        //Tudo branco
+    {{0.0f, 0.0f, 0.0f, 1.0f}, {1.0f, 1.0f, 1.0f, 1.0f}},
+    {{1.0f, 0.0f, 0.0f, 1.0f}, {1.0f, 1.0f, 1.0f, 1.0f}},
+    {{0.75f, 1.0f, 0.0f, 1.0f}, {1.0f, 1.0f, 1.0f, 1.0f}},
+    {{-0.25f, 1.0f, 0.0f, 1.0f}, {1.0f, 1.0f, 1.0f, 1.0f}}
 };
 const GLubyte ParallelogramIndices[] = { 0, 1, 2, 0, 2, 3 };
 
@@ -200,14 +200,24 @@ void MyApp::drawScene() {
     Shaders->bind();
 
     // Pequeno Triângulo Laranja
-    glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(-0.7f, -1.0f, 0.0f))
-        * glm::scale(glm::mat4(1.0f), glm::vec3(0.5f, 0.5f, 1.0f));
+    glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f))
+        * glm::scale(glm::mat4(1.0f), glm::vec3(0.4f, 0.4f, 1.0f));
     baseTriangle->draw(MatrixId, model);
 
     // Pequeno Triângulo Azul
     model = glm::translate(glm::mat4(1.0f), glm::vec3(0.8f, -1.0f, 0.0f))
         * glm::scale(glm::mat4(1.0f), glm::vec3(0.5f, 0.5f, 1.0f));
     baseTriangle->draw(MatrixId, model);
+
+
+
+    // Quadrado Verde 
+    /*
+    model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.4f, 0.0f))
+        * glm::scale(glm::mat4(1.0f), glm::vec3(0.5f, 0.5f, 1.0f));
+    baseSquare->draw(MatrixId, model); */
+
+
 
     Shaders->unbind();
 }

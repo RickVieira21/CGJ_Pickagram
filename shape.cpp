@@ -9,7 +9,8 @@ public:
     GLuint VAO, VBO[2];
     GLsizei indexCount;
 
-  //Cada base shape é um conjunto de buffers que permite desenhar cada peça independentemente 
+  //Cada base shape é um conjunto de buffers que permite desenhar cada peça independentemente
+  // e cada Shape vai criar os seus próprios buffers (VAO, VBO, EBO).
     Shape(const Vertex* vertices, size_t vertSize, const GLubyte* indices, size_t indSize) {
         indexCount = indSize;
 
