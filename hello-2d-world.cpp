@@ -23,6 +23,8 @@
 #include "../mgl/mgl.hpp"
 #include "Vertex.h"
 #include "shape.cpp"
+#include <iostream>
+
 
 Shape* baseTriangle;
 Shape* baseSquare;
@@ -46,6 +48,7 @@ private:
     GLuint VaoId, VboId[2];
     std::unique_ptr<mgl::ShaderProgram> Shaders = nullptr;
     GLint MatrixId;
+    GLint ColorId;
 
     void createShaderProgram();
     //void createBufferObjects();
@@ -64,9 +67,21 @@ void MyApp::createShaderProgram() {
     Shaders->addAttribute(mgl::COLOR_ATTRIBUTE, COLOR);
     Shaders->addUniform("Matrix");
 
+    // uniform para cor dinâmica
+    Shaders->addUniform("uColor");
+
     Shaders->create();
 
     MatrixId = Shaders->Uniforms["Matrix"].index;
+
+    // guardar o índice do uniform de cor se quiseres
+    ColorId = Shaders->Uniforms["uColor"].index;
+
+    std::cout << "Uniforms in shader:" << std::endl;
+    for (auto& u : Shaders->Uniforms) {
+        std::cout << "  " << u.first << " : index = " << u.second.index << std::endl;
+    }
+
 }
 
 //////////////////////////////////////////////////////////////////// VAOs & VBOs
@@ -199,15 +214,23 @@ void MyApp::drawScene() {
     // Drawing directly in clip space
     Shaders->bind();
 
+
     // Pequeno Triângulo Laranja
     glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f))
         * glm::scale(glm::mat4(1.0f), glm::vec3(0.4f, 0.4f, 1.0f));
+    // enviar cor laranja (R,G,B,A)
+
+    glUniform4f(ColorId, 1.0f, 0.5f, 0.0f, 1.0f);
     baseTriangle->draw(MatrixId, model);
 
     // Pequeno Triângulo Azul
     model = glm::translate(glm::mat4(1.0f), glm::vec3(0.8f, -1.0f, 0.0f))
         * glm::scale(glm::mat4(1.0f), glm::vec3(0.5f, 0.5f, 1.0f));
+    // enviar cor azul (R,G,B,A)
+
+    glUniform4f(ColorId, 0.0f, 0.4f, 1.0f, 1.0f);
     baseTriangle->draw(MatrixId, model);
+
 
 
 
