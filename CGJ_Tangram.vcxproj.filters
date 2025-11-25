@@ -24,7 +24,7 @@
     <ClCompile Include="Libraries\mgl\mglApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="hello-2d-world.cpp">
+    <ClCompile Include="Group5-TortoiseTangram.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="shape.cpp">

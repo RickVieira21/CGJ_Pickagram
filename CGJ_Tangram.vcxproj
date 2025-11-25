@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="hello-2d-world.cpp" />
+    <ClCompile Include="Group5-TortoiseTangram.cpp" />
     <ClCompile Include="Libraries\mgl\mglApp.cpp" />
     <ClCompile Include="Libraries\mgl\mglError.cpp" />
     <ClCompile Include="Libraries\mgl\mglShader.cpp" />
