@@ -176,7 +176,7 @@ void MyApp::drawScene() {
 
     // Pequeno Triângulo Azul
     model = 
-        glm::translate(glm::mat4(1.0f), glm::vec3(0.7f, 0.1f, 0.0f)) *
+        glm::translate(glm::mat4(1.0f), glm::vec3(0.7f, 0.11f, 0.0f)) *
         glm::rotate(glm::mat4(1.0f), glm::radians(-135.0f), glm::vec3(0, 0, 1)) * 
         glm::scale(glm::mat4(1.0f), glm::vec3(0.3f, 0.3f, 1.0f));
 
@@ -186,11 +186,11 @@ void MyApp::drawScene() {
 
     // Médio Triângulo Roxo
     model =
-        glm::translate(glm::mat4(1.0f), glm::vec3(0.7f, 0.1f, 0.0f)) *
-        glm::rotate(glm::mat4(1.0f), glm::radians(-90.0f), glm::vec3(0, 0, 1)) *
-        glm::scale(glm::mat4(1.0f), glm::vec3(0.5f, 0.5f, 1.0f));
+        glm::translate(glm::mat4(1.0f), glm::vec3(0.787f, 0.199f, 0.0f)) *
+        glm::rotate(glm::mat4(1.0f), glm::radians(135.0f), glm::vec3(0, 0, 1)) *
+        glm::scale(glm::mat4(1.0f), glm::vec3(0.425f, 0.425f, 1.0f));
 
-    glUniform4f(ColorId, 0.0f, 0.4f, 1.0f, 1.0f); // falta meter roxo
+    glUniform4f(ColorId, 0.35f, 0.0f, 0.5f, 1.0f); // roxo
     baseTriangle->draw(MatrixId, model);
 
 
