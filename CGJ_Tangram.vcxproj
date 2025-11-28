@@ -19,18 +19,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="hello-2d-world.cpp" />
-    <ClCompile Include="Libraries\mgl\mglApp.cpp" />
-    <ClCompile Include="Libraries\mgl\mglError.cpp" />
-    <ClCompile Include="Libraries\mgl\mglShader.cpp" />
-    <ClCompile Include="shape.cpp" />
+    <ClCompile Include="mgl\mglApp.cpp" />
+    <ClCompile Include="mgl\mglCamera.cpp" />
+    <ClCompile Include="mgl\mglError.cpp" />
+    <ClCompile Include="mgl\mglShader.cpp" />
+    <ClCompile Include="src\hello-3d-world.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Vertex.h" />
+    <ClInclude Include="mgl\mgl.hpp" />
+    <ClInclude Include="mgl\mglApp.hpp" />
+    <ClInclude Include="mgl\mglCamera.hpp" />
+    <ClInclude Include="mgl\mglConventions.hpp" />
+    <ClInclude Include="mgl\mglError.hpp" />
+    <ClInclude Include="mgl\mglShader.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="clip-fs.glsl" />
-    <None Include="clip-vs.glsl" />
+    <None Include="src\color-fs.glsl" />
+    <None Include="src\color-vs.glsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

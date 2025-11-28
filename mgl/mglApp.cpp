@@ -138,7 +138,7 @@ void Engine::setupGLEW() {
 }
 
 void Engine::setupOpenGL() {
-  glClearColor(0.1f, 0.1f, 0.1f, 1.0f); //COR DE BACKGROUND
+  glClearColor(0.1f, 0.1f, 0.3f, 1.0f);
   glEnable(GL_DEPTH_TEST);
   glDepthFunc(GL_LEQUAL);
   glDepthMask(GL_TRUE);
@@ -158,7 +158,7 @@ void displayInfo() {
             << std::endl;
   std::cout << "GLEW version " << glewGetString(GLEW_VERSION) << std::endl;
   std::cout << "GLFW version " << glfwGetVersionString() << std::endl;
-  //std::cout << GLM_VERSION_MESSAGE << std::endl;
+  // std::cout << GLM_VERSION_MESSAGE << std::endl;
 }
 
 void Engine::init() {

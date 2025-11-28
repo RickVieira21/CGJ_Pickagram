@@ -15,29 +15,44 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Libraries\mgl\mglError.cpp">
+    <ClCompile Include="mgl\mglApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Libraries\mgl\mglShader.cpp">
+    <ClCompile Include="mgl\mglCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Libraries\mgl\mglApp.cpp">
+    <ClCompile Include="mgl\mglError.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="hello-2d-world.cpp">
+    <ClCompile Include="mgl\mglShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="shape.cpp">
+    <ClCompile Include="src\hello-3d-world.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Vertex.h">
+    <ClInclude Include="mgl\mgl.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mgl\mglApp.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mgl\mglCamera.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mgl\mglConventions.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mgl\mglError.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mgl\mglShader.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="clip-fs.glsl" />
-    <None Include="clip-vs.glsl" />
+    <None Include="src\color-fs.glsl" />
+    <None Include="src\color-vs.glsl" />
   </ItemGroup>
 </Project>
