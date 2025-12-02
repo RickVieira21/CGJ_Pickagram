@@ -27,7 +27,10 @@
     <ClCompile Include="mgl\mglShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\hello-3d-world.cpp">
+    <ClCompile Include="..\..\..\Downloads\04-mesh-loader-2025\04-mesh-loader\src\mesh-loader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Downloads\04-mesh-loader-2025\04-mesh-loader\mgl\mglMesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -52,7 +55,11 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\color-fs.glsl" />
-    <None Include="src\color-vs.glsl" />
+    <None Include="src\cube-fs.glsl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="src\cube-vs.glsl">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

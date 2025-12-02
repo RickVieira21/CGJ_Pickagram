@@ -19,11 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Downloads\04-mesh-loader-2025\04-mesh-loader\mgl\mglMesh.cpp" />
+    <ClCompile Include="..\..\..\Downloads\04-mesh-loader-2025\04-mesh-loader\src\mesh-loader.cpp" />
     <ClCompile Include="mgl\mglApp.cpp" />
     <ClCompile Include="mgl\mglCamera.cpp" />
     <ClCompile Include="mgl\mglError.cpp" />
     <ClCompile Include="mgl\mglShader.cpp" />
-    <ClCompile Include="src\hello-3d-world.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mgl\mgl.hpp" />
@@ -34,8 +35,8 @@
     <ClInclude Include="mgl\mglShader.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\color-fs.glsl" />
-    <None Include="src\color-vs.glsl" />
+    <None Include="src\cube-fs.glsl" />
+    <None Include="src\cube-vs.glsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -123,13 +124,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)libraries\glfw\include;$(SolutionDir)libraries\glm;$(SolutionDir)libraries\mgl;$(SolutionDir)libraries\glew\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)libraries\Assimp\include;$(SolutionDir)libraries\glfw\include;$(SolutionDir)libraries\glm;$(SolutionDir)libraries\mgl;$(SolutionDir)libraries\glew\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)libraries\glew\lib\Release\x64;$(SolutionDir)libraries\glfw\lib-vc2022</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3dll.lib;assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)libraries\Assimp\lib\x64;$(SolutionDir)libraries\glew\lib\Release\x64;$(SolutionDir)libraries\glfw\lib-vc2022</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y "$(SolutionDir)libraries\glew\bin\Release\x64\glew32.dll" "$(OutDir)"
@@ -144,15 +145,15 @@ xcopy /y "$(SolutionDir)libraries\glfw\lib-vc2022\glfw3.dll" "$(OutDir)"</Comman
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)libraries\glfw\include;$(SolutionDir)libraries\glm;$(SolutionDir)libraries\mgl;$(SolutionDir)libraries\glew\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)libraries\Assimp\include;$(SolutionDir)libraries\glfw\include;$(SolutionDir)libraries\glm;$(SolutionDir)libraries\mgl;$(SolutionDir)libraries\glew\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)libraries\glew\lib\Release\x64;$(SolutionDir)libraries\glfw\lib-vc2022</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3dll.lib;assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)libraries\Assimp\lib\x64;$(SolutionDir)libraries\glew\lib\Release\x64;$(SolutionDir)libraries\glfw\lib-vc2022</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y "$(SolutionDir)libraries\glew\bin\Release\x64\glew32.dll" "$(OutDir)"
