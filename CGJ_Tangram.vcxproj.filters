@@ -15,51 +15,31 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="mgl\mglApp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="mgl\mglCamera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="mgl\mglError.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="mgl\mglShader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Downloads\04-mesh-loader-2025\04-mesh-loader\src\mesh-loader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Downloads\04-mesh-loader-2025\04-mesh-loader\mgl\mglMesh.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="mgl\mgl.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mgl\mglApp.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mgl\mglCamera.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mgl\mglConventions.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mgl\mglError.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mgl\mglShader.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="src\cube-fs.glsl">
       <Filter>Source Files</Filter>
     </None>
     <None Include="src\cube-vs.glsl">
       <Filter>Source Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Libraries\mgl\mesh-loader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\mgl\mglApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\mgl\mglCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\mgl\mglError.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\mgl\mglMesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\mgl\mglShader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

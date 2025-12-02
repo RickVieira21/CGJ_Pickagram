@@ -19,24 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Downloads\04-mesh-loader-2025\04-mesh-loader\mgl\mglMesh.cpp" />
-    <ClCompile Include="..\..\..\Downloads\04-mesh-loader-2025\04-mesh-loader\src\mesh-loader.cpp" />
-    <ClCompile Include="mgl\mglApp.cpp" />
-    <ClCompile Include="mgl\mglCamera.cpp" />
-    <ClCompile Include="mgl\mglError.cpp" />
-    <ClCompile Include="mgl\mglShader.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="mgl\mgl.hpp" />
-    <ClInclude Include="mgl\mglApp.hpp" />
-    <ClInclude Include="mgl\mglCamera.hpp" />
-    <ClInclude Include="mgl\mglConventions.hpp" />
-    <ClInclude Include="mgl\mglError.hpp" />
-    <ClInclude Include="mgl\mglShader.hpp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="src\cube-fs.glsl" />
     <None Include="src\cube-vs.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Libraries\mgl\mesh-loader.cpp" />
+    <ClCompile Include="Libraries\mgl\mglApp.cpp" />
+    <ClCompile Include="Libraries\mgl\mglCamera.cpp" />
+    <ClCompile Include="Libraries\mgl\mglError.cpp" />
+    <ClCompile Include="Libraries\mgl\mglMesh.cpp" />
+    <ClCompile Include="Libraries\mgl\mglShader.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -124,7 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)libraries\Assimp\include;$(SolutionDir)libraries\glfw\include;$(SolutionDir)libraries\glm;$(SolutionDir)libraries\mgl;$(SolutionDir)libraries\glew\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)libraries\Assimp\include;$(SolutionDir)libraries\glfw\include;$(SolutionDir)libraries\glm;$(SolutionDir)libraries\mgl;$(SolutionDir)libraries\glew\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,7 +137,7 @@ xcopy /y "$(SolutionDir)libraries\glfw\lib-vc2022\glfw3.dll" "$(OutDir)"</Comman
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)libraries\Assimp\include;$(SolutionDir)libraries\glfw\include;$(SolutionDir)libraries\glm;$(SolutionDir)libraries\mgl;$(SolutionDir)libraries\glew\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)libraries\Assimp\include;$(SolutionDir)libraries\glfw\include;$(SolutionDir)libraries\glm;$(SolutionDir)libraries\mgl;$(SolutionDir)libraries\glew\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
