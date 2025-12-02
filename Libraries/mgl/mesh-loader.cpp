@@ -36,7 +36,7 @@ private:
 
 void MyApp::createMeshes() {
   std::string mesh_dir = "assets/models/";
-  std::string mesh_file = "CGJ_Group5_Pickagram.obj";
+  std::string mesh_file = "Pickagram_Group05.obj";
   // std::string mesh_file = "cube-v.obj";
   // std::string mesh_file = "cube-vn-flat.obj";
   // std::string mesh_file = "cube-vn-smooth.obj";
