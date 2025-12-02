@@ -19,6 +19,9 @@ public:
   void initCallback(GLFWwindow *win) override;
   void displayCallback(GLFWwindow *win, double elapsed) override;
   void windowSizeCallback(GLFWwindow *win, int width, int height) override;
+  void mouseButtonCallback(GLFWwindow* win, int button, int action, int mods) override;
+  void cursorCallback(GLFWwindow* win, double xpos, double ypos) override;
+  void scrollCallback(GLFWwindow* win, double xoffset, double yoffset) override;
 
 private:
   const GLuint UBO_BP = 0;
@@ -36,6 +39,10 @@ private:
 OrbitalCamera* cam1;
 OrbitalCamera* cam2;
 OrbitalCamera* activeCam;
+
+//For the callbacks
+double lastX, lastY;
+bool rightPressed = false;
 
 
 ///////////////////////////////////////////////////////////////////////// MESHES
@@ -148,6 +155,39 @@ void MyApp::windowSizeCallback(GLFWwindow *win, int winx, int winy) {
 }
 
 void MyApp::displayCallback(GLFWwindow *win, double elapsed) { drawScene(); }
+
+
+void MyApp::mouseButtonCallback(GLFWwindow* win, int button, int action, int mods) {
+    if (button == GLFW_MOUSE_BUTTON_RIGHT) {
+        if (action == GLFW_PRESS) {
+            rightPressed = true;
+            glfwGetCursorPos(win, &lastX, &lastY);
+        }
+        else if (action == GLFW_RELEASE) {
+            rightPressed = false;
+        }
+    }
+}
+
+void MyApp::cursorCallback(GLFWwindow* win, double xpos, double ypos) {
+    if (!rightPressed) return;
+
+    float dx = float(xpos - lastX);
+    float dy = float(ypos - lastY);
+
+    lastX = xpos;
+    lastY = ypos;
+
+    activeCam->rotate(-dx * 0.5f, -dy * 0.5f);
+    Camera->setViewMatrix(activeCam->getViewMatrix());
+}
+
+void MyApp::scrollCallback(GLFWwindow* win, double xoffset, double yoffset) {
+    activeCam->zoom(-yoffset);
+    Camera->setViewMatrix(activeCam->getViewMatrix());
+}
+
+
 
 /////////////////////////////////////////////////////////////////////////// MAIN
 
