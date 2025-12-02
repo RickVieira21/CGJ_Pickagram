@@ -13,7 +13,7 @@ public:
     float fov = 45.0f;
     float nearPlane = 0.1f;
     float farPlane = 100.0f;
-    float orthoSize = 5.0f;
+    float orthoSize = 10.0f;
 
     OrbitalCamera(const glm::vec3& c, float d);
 

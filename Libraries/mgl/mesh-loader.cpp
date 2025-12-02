@@ -22,6 +22,7 @@ public:
   void mouseButtonCallback(GLFWwindow* win, int button, int action, int mods) override;
   void cursorCallback(GLFWwindow* win, double xpos, double ypos) override;
   void scrollCallback(GLFWwindow* win, double xoffset, double yoffset) override;
+  void keyCallback(GLFWwindow* win, int key, int scancode, int action, int mods) override;
 
 private:
   const GLuint UBO_BP = 0;
@@ -169,6 +170,7 @@ void MyApp::mouseButtonCallback(GLFWwindow* win, int button, int action, int mod
     }
 }
 
+
 void MyApp::cursorCallback(GLFWwindow* win, double xpos, double ypos) {
     if (!rightPressed) return;
 
@@ -182,10 +184,32 @@ void MyApp::cursorCallback(GLFWwindow* win, double xpos, double ypos) {
     Camera->setViewMatrix(activeCam->getViewMatrix());
 }
 
+
 void MyApp::scrollCallback(GLFWwindow* win, double xoffset, double yoffset) {
     activeCam->zoom(-yoffset);
     Camera->setViewMatrix(activeCam->getViewMatrix());
 }
+
+
+void MyApp::keyCallback(GLFWwindow* win, int key, int scancode, int action, int mods) {
+    int width, height;
+    glfwGetWindowSize(win, &width, &height);
+
+
+    //CHANGE BETWEEN CAMERAS
+    if (glfwGetKey(win, GLFW_KEY_C) == GLFW_PRESS) {
+        activeCam = (activeCam == cam1) ? cam2 : cam1;
+        Camera->setViewMatrix(activeCam->getViewMatrix());
+        Camera->setProjectionMatrix(activeCam->getProjectionMatrix((float)width / height));
+    }
+
+    //CHANGE PERPECTIVE/ORTHO 
+    if (glfwGetKey(win, GLFW_KEY_P) == GLFW_PRESS) {
+        activeCam->toggleProjection();
+        Camera->setProjectionMatrix(activeCam->getProjectionMatrix((float)width / height));
+    }
+}
+
 
 
 

@@ -11,9 +11,9 @@ glm::mat4 OrbitalCamera::getViewMatrix() const {
 }
 
 glm::mat4 OrbitalCamera::getProjectionMatrix(float aspect) const {
-    if (perspective) {
+    if (perspective) { //PERSPECTIVE
         return glm::perspective(glm::radians(fov), aspect, nearPlane, farPlane);
-    } else {
+    } else { //ORTHO 
         float s = orthoSize;
         return glm::ortho(-s * aspect, s * aspect, -s, s, nearPlane, farPlane);
     }
