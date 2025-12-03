@@ -33,6 +33,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Libraries\mgl\OrbitalCamera.hpp" />
+    <ClInclude Include="Libraries\mgl\SceneNode.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

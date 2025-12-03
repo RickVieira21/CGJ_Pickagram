@@ -11,6 +11,7 @@
 
 #include "../mgl/mgl.hpp"
 #include "OrbitalCamera.hpp"
+#include "SceneNode.hpp"
 
 ////////////////////////////////////////////////////////////////////////// MYAPP
 
@@ -30,6 +31,9 @@ private:
   mgl::Camera *Camera = nullptr;
   GLint ModelMatrixId;
   mgl::Mesh *Mesh = nullptr;
+  SceneNode* rootNode = nullptr;
+  SceneNode* tableNode = nullptr;
+
 
   void createMeshes();
   void createShaderPrograms();
@@ -44,6 +48,7 @@ OrbitalCamera* activeCam;
 //For the callbacks
 double lastX, lastY;
 bool rightPressed = false;
+bool leftPressed = false;
 
 
 ///////////////////////////////////////////////////////////////////////// MESHES
@@ -91,6 +96,7 @@ void MyApp::createShaderPrograms() {
   }
 
   Shaders->addUniform(mgl::MODEL_MATRIX);
+  Shaders->addUniform("baseColor");               // per-node base color used by fragment shader
   Shaders->addUniformBlock(mgl::CAMERA_BLOCK, UBO_BP);
   Shaders->create();
 
@@ -135,10 +141,11 @@ void MyApp::createCamera() {
 glm::mat4 ModelMatrix(1.0f);
 
 void MyApp::drawScene() {
-  Shaders->bind();
-  glUniformMatrix4fv(ModelMatrixId, 1, GL_FALSE, glm::value_ptr(ModelMatrix));
-  Mesh->draw();
-  Shaders->unbind();
+  //Shaders->bind();
+  //glUniformMatrix4fv(ModelMatrixId, 1, GL_FALSE, glm::value_ptr(ModelMatrix));
+  //Mesh->draw();
+  //Shaders->unbind();
+  rootNode->draw(glm::mat4(1.0f));
 }
 
 ////////////////////////////////////////////////////////////////////// CALLBACKS
@@ -147,6 +154,36 @@ void MyApp::initCallback(GLFWwindow *win) {
   createMeshes();
   createShaderPrograms(); // after mesh;
   createCamera();
+
+  mgl::Mesh* tableMesh = new mgl::Mesh();
+  tableMesh->create("assets/models/tabletop.obj");
+  mgl::Mesh* pickagramMesh = new mgl::Mesh();
+  pickagramMesh->create("assets/models/Pickagram_Group05.obj");
+  if (!pickagramMesh->hasNormals()) {
+    pickagramMesh->generateNormals();
+  }
+
+  // Root node
+  this->rootNode = new SceneNode();
+
+  // Table node
+  this->tableNode = new SceneNode();
+  tableNode->mesh = tableMesh;
+  tableNode->shader = Shaders;
+  tableNode->modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
+  tableNode->color = glm::vec3(0.6f, 0.6f, 0.6f); // tabletop base color (gray)
+
+  // Pickagram node
+  SceneNode* pickagramNode = new SceneNode();
+  pickagramNode->mesh = pickagramMesh;
+  pickagramNode->shader = Shaders;
+  pickagramNode->modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.7f, 0.0f));
+  pickagramNode->color = glm::vec3(0.9f, 0.2f, 0.1f); // distinct base color (red-ish)
+
+  // Hierarchy
+  tableNode->addChild(pickagramNode);
+  rootNode->addChild(tableNode);
+
 }
 
 void MyApp::windowSizeCallback(GLFWwindow *win, int winx, int winy) {
@@ -168,20 +205,40 @@ void MyApp::mouseButtonCallback(GLFWwindow* win, int button, int action, int mod
             rightPressed = false;
         }
     }
+    else if (button == GLFW_MOUSE_BUTTON_LEFT) {
+        if (action == GLFW_PRESS) {
+            leftPressed = true;
+            glfwGetCursorPos(win, &lastX, &lastY);
+        }
+        else if (action == GLFW_RELEASE) {
+            leftPressed = false;
+        }
+    }
 }
 
-
 void MyApp::cursorCallback(GLFWwindow* win, double xpos, double ypos) {
-    if (!rightPressed) return;
-
     float dx = float(xpos - lastX);
     float dy = float(ypos - lastY);
 
+    if (rightPressed) {
+        activeCam->rotate(-dx * 0.5f, -dy * 0.5f);
+        Camera->setViewMatrix(activeCam->getViewMatrix());
+    }
+
+    if (leftPressed && tableNode) {
+        // Camera axes (use the active camera view matrix)
+        glm::vec3 right = glm::normalize(glm::vec3(activeCam->getViewMatrix()[0]));
+        glm::vec3 forward = -glm::normalize(glm::vec3(activeCam->getViewMatrix()[2]));
+
+        const float scale = 0.01f;
+        tableNode->modelMatrix = glm::translate(
+            tableNode->modelMatrix,
+            right * dx * scale + forward * (-dy) * scale
+        );
+    }
+
     lastX = xpos;
     lastY = ypos;
-
-    activeCam->rotate(-dx * 0.5f, -dy * 0.5f);
-    Camera->setViewMatrix(activeCam->getViewMatrix());
 }
 
 
