@@ -218,16 +218,27 @@ void Mesh::destroyBufferObjects() {
 }
 
 void Mesh::draw() {
-  glBindVertexArray(VaoId);
-  for (MeshData &mesh : Meshes) {
-    glDrawElementsBaseVertex(
-        GL_TRIANGLES, mesh.nIndices, GL_UNSIGNED_INT,
-        reinterpret_cast<void *>((sizeof(unsigned int) * mesh.baseIndex)),
-        mesh.baseVertex);
-    // GLenum mode, GLsizei count, GLenum type, void *indices, GLint basevertex
-  }
-  glBindVertexArray(0);
+    draw(-1); // draw all submeshes
 }
+
+void Mesh::draw(int meshIndex) {
+    glBindVertexArray(VaoId);
+    if (meshIndex >= 0) {
+        MeshData& mesh = Meshes[meshIndex];
+        glDrawElementsBaseVertex(GL_TRIANGLES, mesh.nIndices, GL_UNSIGNED_INT,
+            reinterpret_cast<void*>(sizeof(unsigned int) * mesh.baseIndex),
+            mesh.baseVertex);
+    }
+    else {
+        for (MeshData& mesh : Meshes) {
+            glDrawElementsBaseVertex(GL_TRIANGLES, mesh.nIndices, GL_UNSIGNED_INT,
+                reinterpret_cast<void*>(sizeof(unsigned int) * mesh.baseIndex),
+                mesh.baseVertex);
+        }
+    }
+    glBindVertexArray(0);
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 } // namespace mgl

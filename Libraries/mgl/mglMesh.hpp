@@ -57,6 +57,8 @@ public:
 
   void create(const std::string &filename);
   void draw() override;
+  void draw(int meshIndex); // overload
+  size_t getMeshCount() const { return Meshes.size(); } // getter for Meshes
 
   bool hasNormals();
   bool hasTexcoords();

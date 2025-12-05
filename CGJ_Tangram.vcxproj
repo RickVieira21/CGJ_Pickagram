@@ -19,10 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\cube-fs.glsl" />
-    <None Include="src\cube-vs.glsl" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="Libraries\mgl\mesh-loader.cpp" />
     <ClCompile Include="Libraries\mgl\mglApp.cpp" />
     <ClCompile Include="Libraries\mgl\mglCamera.cpp" />
@@ -36,6 +32,10 @@
     <ClInclude Include="Libraries\mgl\mglApp.hpp" />
     <ClInclude Include="Libraries\mgl\OrbitalCamera.hpp" />
     <ClInclude Include="Libraries\mgl\SceneNode.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cube-fs.glsl" />
+    <None Include="cube-vs.glsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

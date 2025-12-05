@@ -150,41 +150,41 @@ void MyApp::drawScene() {
 
 ////////////////////////////////////////////////////////////////////// CALLBACKS
 
-void MyApp::initCallback(GLFWwindow *win) {
-  createMeshes();
-  createShaderPrograms(); // after mesh;
-  createCamera();
+void MyApp::initCallback(GLFWwindow* win) {
+    createMeshes();
+    createShaderPrograms();
+    createCamera();
 
-  mgl::Mesh* tableMesh = new mgl::Mesh();
-  tableMesh->create("assets/models/tabletop.obj");
-  mgl::Mesh* pickagramMesh = new mgl::Mesh();
-  pickagramMesh->create("assets/models/Pickagram_Group05.obj");
-  if (!pickagramMesh->hasNormals()) {
-    pickagramMesh->generateNormals();
-  }
+    // Table
+    mgl::Mesh* tableMesh = new mgl::Mesh();
+    tableMesh->create("assets/models/tabletop.obj");
 
-  // Root node
-  this->rootNode = new SceneNode();
+    tableNode = new SceneNode();
+    tableNode->mesh = tableMesh;
+    tableNode->shader = Shaders;
+    tableNode->color = glm::vec3(0.6f);
 
-  // Table node
-  this->tableNode = new SceneNode();
-  tableNode->mesh = tableMesh;
-  tableNode->shader = Shaders;
-  tableNode->modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
-  tableNode->color = glm::vec3(0.6f, 0.6f, 0.6f); // tabletop base color (gray)
+    rootNode = new SceneNode();
+    rootNode->addChild(tableNode);
 
-  // Pickagram node
-  SceneNode* pickagramNode = new SceneNode();
-  pickagramNode->mesh = pickagramMesh;
-  pickagramNode->shader = Shaders;
-  pickagramNode->modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.7f, 0.0f));
-  pickagramNode->color = glm::vec3(0.9f, 0.2f, 0.1f); // distinct base color (red-ish)
+    // Pickagram
+    mgl::Mesh* pickagramMesh = new mgl::Mesh();
+    pickagramMesh->create("assets/models/Pickagram_Group05.obj");
+    if (!pickagramMesh->hasNormals()) pickagramMesh->generateNormals();
 
-  // Hierarchy
-  tableNode->addChild(pickagramNode);
-  rootNode->addChild(tableNode);
+    // Create one SceneNode per submesh
+    for (size_t i = 0; i < pickagramMesh->getMeshCount(); i++) {
+        SceneNode* partNode = new SceneNode();
+        partNode->mesh = pickagramMesh;
+        partNode->shader = Shaders;
+        partNode->submeshIndex = i;
+        partNode->modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.7f, 0.0f));
+        partNode->color = glm::vec3(1.0f, 0.0f + 0.1f * i, 0.0f + 0.1f * i);
 
+        tableNode->addChild(partNode);
+    }
 }
+
 
 void MyApp::windowSizeCallback(GLFWwindow *win, int winx, int winy) {
     glViewport(0, 0, winx, winy);

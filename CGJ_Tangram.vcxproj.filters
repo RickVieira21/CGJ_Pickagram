@@ -15,14 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\cube-fs.glsl">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="src\cube-vs.glsl">
-      <Filter>Source Files</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="Libraries\mgl\mesh-loader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -58,5 +50,13 @@
     <ClInclude Include="Libraries\mgl\mglApp.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cube-fs.glsl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="cube-vs.glsl">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
